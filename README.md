@@ -1,5 +1,5 @@
 # Advanced Programming - HW6
-<p  align="center"> <b>Homework 4 - Spring 2022 Semester <br> Deadline: Tuesday khordad 12th - 11:59 pm</b> </p>
+<p  align="center"> <b>Homework 6 - Spring 2022 Semester <br> Deadline: Thursday khordad 12th - 11:59 pm</b> </p>
 
 ## Outline
 In this homework, we are going to Solve 4 questions using functions in the C++ STL library. Read each question carefully and write down your code.
@@ -18,6 +18,7 @@ title="minor" width="300" align="middle" />
 
 implement a function called `gradient_descent` that calculates the minimum of any given math-function (like sine, cosine, ...). the math-function can be a pointer to function, lambda function or a functor (see tests 1 to 4). The first input of your function should be `the initial value` and the second input `the step size`.
 
+**Note.** implement all your code in `q1` namespace and `q1.h` file.
 
 </br>
 
@@ -51,6 +52,8 @@ Finally, implement a function called `sort` and sort the patients by their possi
 ```
 **Note.** you are not allowed to use any `for` in your `sort` function.
 
+**Note.** implement all your code in `q2` namespace and `q2.h` file.
+
 </br> 
 
 # Question 3
@@ -77,6 +80,8 @@ duration + connection_times + 3*price
 ```
 
 **Note.** you are not allowed to use any `for` in your `gather_flights` function.
+
+**Note.** implement all your code in `q3` namespace and `q3.h` file.
 
 </br>
 
@@ -109,6 +114,8 @@ Vector2D kalman_filter(std::vector<Sensor> sensors)
 this function calculates our final position measurement based on the kalman-filter of `sensors`.
 
 **Note.** again you are not allowed to use any `for` in your `gather_flights` function.
+
+**Note.** implement all your code in `q4` namespace and `q4.h` file.
 
 
 </br>
