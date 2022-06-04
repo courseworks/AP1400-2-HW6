@@ -10,9 +10,13 @@ int main(int argc, char** argv)
 {
     if (false) // make false to run unit-tests
     {
-     //   auto min1 = q1::gradient_descent(0.01, 0.1, cos);
-       auto min = q1::gradient_descent(0.01, 0.01, [](double a){return sin(a)+cos(a);});
-        std::cout<<min<<std::endl;
+        //   auto min1 = q1::gradient_descent(0.01, 0.1, cos);
+        //    auto min = q1::gradient_descent(0.01, 0.01, [](double a){return sin(a)+cos(a);});
+        struct Func {
+            double operator()(double a) { return sin(a); }
+        };
+        auto min = q1::gradient_descent<double, Func>(0.0, 0.01);
+        std::cout << min << std::endl;
 
     } else {
         ::testing::InitGoogleTest(&argc, argv);
