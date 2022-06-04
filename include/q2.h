@@ -5,8 +5,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <functional>
 namespace q2 {
-// template <typename T>
 struct Patient {
     Patient(const std::string& _name, const size_t& _age, const size_t& _smokes, const size_t& _area_q, const size_t& _alkhol)
         : name { _name }
@@ -34,19 +34,17 @@ std::vector<Patient> read_file(const T& filename)
     getline(file, firstname, '\n');
     getline(file, firstname, '\n');
     while (!file.eof()) {
-
         std::getline(file, firstname, ',');
-
         firstname.erase(std::remove(firstname.begin(), firstname.end(), ' '), firstname.end());
         std::getline(file, lastname, ',');
         lastname.erase(std::remove(lastname.begin(), lastname.end(), ' '), lastname.end());
         std::string name1 { firstname + " " + lastname };
-        std::cout << name1 << std::endl;
+        // std::cout << name1 << std::endl;
         std::getline(file, age, ',');
         std::getline(file, smokes, ',');
         std::getline(file, area_q, ',');
         std::getline(file, alkhol, '\n');
-        std::cout << name1 << "|" << age << "|" << smokes << "|" << area_q << "|" << alkhol << std::endl;
+        // std::cout << name1 << "|" << age << "|" << smokes << "|" << area_q << "|" << alkhol << std::endl;
         patients.push_back(Patient(name1, std::stoi(age), std::stoi(smokes), std::stoi(area_q), std::stoi(alkhol)));
     }
     return patients;
