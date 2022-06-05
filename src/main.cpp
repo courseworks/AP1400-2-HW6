@@ -21,7 +21,7 @@ int main(int argc, char** argv)
         // std::cout << *std::remove(a.begin(), a.end(), ' ') << std::endl;
         // std::cout << a << std::endl;
         // a.erase(std::remove(a.begin(), a.end(), ' '), a.end());
-        std::string a {"1h50m,2h130m,3m,4h"};
+        std::string a {"1h50m,2h130m,4h"};
         
         std::cout<<q3::timetomin(a)<<std::endl;
         

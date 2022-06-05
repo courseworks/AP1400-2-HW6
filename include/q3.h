@@ -2,6 +2,7 @@
 #define Q3_H
 #include <iostream>
 #include <queue>
+#include <regex>
 #include <string>
 namespace q3 {
 struct Flight {
@@ -44,43 +45,64 @@ void gather_flights(const T& filename)
         // flights.push(std::stoi(flight_number));
     }
 }
+
 template <typename T>
 size_t timetomin(T t)
 {
-    auto subt { t };
-    size_t pos { 0 }, pos_h { 0 }, pos_m { 0 }, sum { 0 };
-    while (!(t.empty())) {
-        // std::cout << t << std::endl;
-        if ((pos = t.find(','))!=std::string::npos) {
-            subt = t.substr(0, pos + 1);
-            std::cout << subt << std::endl;
-
-            if ((pos_h = subt.find('h'))!=std::string::npos) {
-                sum += (60 * std::stoi(subt.substr(0, pos_h)));
-                subt.erase(0, pos_h + 1);
-                std::cout << subt << std::endl;
-            }
-            if ((pos_m = subt.find('m'))!=std::string::npos) {
-                sum += std::stoi(subt.substr(0, pos_m));
-                subt.erase(0, pos_m + 1);
-                std::cout << subt << std::endl;
-            }
-            t.erase(0, pos + 1);
+    std::regex pattern(R"((\d+)h(\d+)?m?\,?)");
+    std::smatch match;
+    size_t sum {0};
+    while (std::regex_search(t, match, pattern)) {
+        sum += std::stoi(match[1]) * 60;
+        if (static_cast<std::string>(match[2]).empty()) {
+            sum += 0;
         } else {
-            // std::cout<<sum<<"beforelast "<<std::endl;
-            if ((pos_h = t.find('h'))!=std::string::npos) {
-                sum += (60 * std::stoi(t.substr(0, pos_h)));
-                t.erase(0, pos_h + 1);
-                std::cout << t << std::endl;
-            }
-            if ((pos_m = t.find('m'))!=std::string::npos) {
-                sum += std::stoi(t.substr(0, pos_m));
-                t.erase(0, pos_m + 1);
-                std::cout << t << std::endl;
-            }
+            sum += std::stoi(match[2]);
         }
+        t = match.suffix().str();
+        // std::cout << sum << " ->" << t << std::endl;
     }
     return sum;
 }
+//---------not optimized algorithem timetomin---------------
+// template <typename T>
+// size_t timetomin(T t)
+// {
+//     auto subt { t };
+//     size_t pos { 0 }, pos_h { 0 }, pos_m { 0 }, sum { 0 };
+//     while (!(t.empty())) {
+//         // std::cout << t << std::endl;
+//         if ((pos = t.find(','))!=std::string::npos) {
+//             subt = t.substr(0, pos + 1);
+//             std::cout << subt << std::endl;
+
+//             if ((pos_h = subt.find('h'))!=std::string::npos) {
+//                 sum += (60 * std::stoi(subt.substr(0, pos_h)));
+//                 subt.erase(0, pos_h + 1);
+//                 std::cout << subt << std::endl;
+//             }
+//             if ((pos_m = subt.find('m'))!=std::string::npos) {
+//                 sum += std::stoi(subt.substr(0, pos_m));
+//                 subt.erase(0, pos_m + 1);
+//                 std::cout << subt << std::endl;
+//             }
+//             t.erase(0, pos + 1);
+//         } else {
+//             // std::cout<<sum<<"beforelast "<<std::endl;
+//             if ((pos_h = t.find('h'))!=std::string::npos) {
+//                 sum += (60 * std::stoi(t.substr(0, pos_h)));
+//                 t.erase(0, pos_h + 1);
+//                 std::cout << t << std::endl;
+//             }
+//             if ((pos_m = t.find('m'))!=std::string::npos) {
+//                 sum += std::stoi(t.substr(0, pos_m));
+//                 t.erase(0, pos_m + 1);
+//                 std::cout << t << std::endl;
+//             }
+//         }
+//     }
+//     return sum;
+// }
+
 }
 #endif // Q3_H
