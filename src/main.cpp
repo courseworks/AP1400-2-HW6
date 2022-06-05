@@ -8,7 +8,7 @@
 
 int main(int argc, char** argv)
 {
-    if (true) // make false to run unit-tests
+    if (false) // make false to run unit-tests
     {
         // std::string a { "abcdi - fgplvvcx12:3qw456 " };
         // std::stringstream b {a};
@@ -17,14 +17,19 @@ int main(int argc, char** argv)
         // b.ignore(1,'-');
         // b.ignore(15,':');
         // b>>d;
-        // std::cout <<c <<"   "<<d<<std::endl; 
+        // std::cout <<c <<"   "<<d<<std::endl;
         // std::cout << *std::remove(a.begin(), a.end(), ' ') << std::endl;
         // std::cout << a << std::endl;
         // a.erase(std::remove(a.begin(), a.end(), ' '), a.end());
-        std::string a {"1h50m,2h130m,4h"};
-        
+        // auto flights = q3::gather_flights("flights.txt");
+        // std::vector<size_t> flight_numbers;
+        std::string a{"1h,3h50min"};
         std::cout<<q3::timetomin(a)<<std::endl;
-        
+        // while (!flights.empty()) {
+        //     // flight_numbers.push_back(q3::timetomin(flights.top().connection_times));
+        //     flights.pop();
+        // }
+
         //  q3::gather_flights("flights.txt");
 
     } else {
