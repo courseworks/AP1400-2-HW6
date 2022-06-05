@@ -33,8 +33,9 @@ inline size_t timetomin(std::string t)
         } else {
             sum += std::stoi(match[2]);
         }
+        //go to next camma
         t = match.suffix().str();
-        // std::cout << sum << " ->" << t << std::endl;
+        std::cout<<t<<std::endl;
     }
     return sum;
 }
@@ -49,6 +50,7 @@ inline auto gather_flights(const std::string& filename)
     std::priority_queue<Flight, std::vector<Flight>, decltype(comp)> flights { comp };
     std::string flight_number, duration, connections, connection_times, price;
     while (file.good()) {
+        //20 is enough but could be more 
         file.ignore(20, ':');
         std::getline(file, flight_number, ' ');
         file.ignore(20, ':');
@@ -59,7 +61,6 @@ inline auto gather_flights(const std::string& filename)
         std::getline(file, connection_times, ' ');
         file.ignore(20, ':');
         std::getline(file, price, '\n');
-        // std::cout << flight_number << " " << duration << " " << connections << " " << timetomin(connection_times) << " " << price << std::endl;
         flights.push(Flight(flight_number, timetomin(duration), std::stoi(connections), timetomin(connection_times), std::stoi(price)));
     }
     return flights;

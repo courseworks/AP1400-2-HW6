@@ -23,8 +23,8 @@ int main(int argc, char** argv)
         // a.erase(std::remove(a.begin(), a.end(), ' '), a.end());
         // auto flights = q3::gather_flights("flights.txt");
         // std::vector<size_t> flight_numbers;
-        std::string a{"1h,3h50min"};
-        std::cout<<q3::timetomin(a)<<std::endl;
+        // std::string a{"1h,3h50min"};
+        // std::cout<<q3::timetomin(a)<<std::endl;
         // while (!flights.empty()) {
         //     // flight_numbers.push_back(q3::timetomin(flights.top().connection_times));
         //     flights.pop();
