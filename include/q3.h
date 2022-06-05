@@ -21,7 +21,7 @@ struct Flight {
     size_t price;
 };
 
-static size_t timetomin(std::string t)
+inline size_t timetomin(std::string t)
 {
     std::regex pattern(R"((\d+)\h(\d+)?\m?\,?)");
     std::smatch match;
@@ -39,7 +39,7 @@ static size_t timetomin(std::string t)
     return sum;
 }
 
-static auto gather_flights(const std::string& filename)
+inline auto gather_flights(const std::string& filename)
 {
     std::ifstream file;
     file.open(filename);
@@ -59,8 +59,7 @@ static auto gather_flights(const std::string& filename)
         std::getline(file, connection_times, ' ');
         file.ignore(20, ':');
         std::getline(file, price, '\n');
-        ;
-        std::cout <<flight_number <<" "<< duration <<" "<<connections << " "<<timetomin(connection_times) << " "<<price <<std::endl;
+        // std::cout << flight_number << " " << duration << " " << connections << " " << timetomin(connection_times) << " " << price << std::endl;
         flights.push(Flight(flight_number, timetomin(duration), std::stoi(connections), timetomin(connection_times), std::stoi(price)));
     }
     return flights;

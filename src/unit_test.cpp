@@ -79,7 +79,7 @@ TEST(HW6Test, TEST7) {
     std::vector<std::string> correct{"9725", "QR720", "MA127", "9724", "QR492", "GH758"};
     EXPECT_EQ(flight_numbers, correct);
 }
-/*
+
 TEST(HW6Test, TEST8) {
     std::vector<q4::Sensor> sensors{{{0, 0.01}, 0.5},
                                 {{0.5, 0.009}, 0.2}};
@@ -99,4 +99,4 @@ TEST(HW6Test, TEST9) {
     EXPECT_NEAR(kalman.y, 0.4440, 0.01);
     // std::cout << kalman.x << ", " << kalman.y << std::endl;
 }
-*/
+
